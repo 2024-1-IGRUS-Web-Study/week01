@@ -27,6 +27,7 @@ public class NumberBaseballGame {
 
                 if(input.equals("exit")){
                     System.out.println("프로그램을 종료합니다.");
+                    scan.close();
                     return;
                 }
 
