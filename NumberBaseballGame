@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class NumberBaseballGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("3자리 숫자를 입력해주세요>> ");
+
+        int[] RandomNumber = RandomNumberProgram();
+
+        int[] UserNumber = new int[3];
+
+        while (true) {
+            System.out.print("세 자리 숫자를 입력하세요: ");
+            int InputNumber = scanner.nextInt();
+            UserNumber[0] = InputNumber / 100;
+            UserNumber[1] = (InputNumber / 10) % 10;
+            UserNumber[2] = InputNumber % 10;
+
+            int strikes = 0;
+            int balls = 0;
+            int outs = 0;
+            for (int i = 0; i < 3; i++) {
+                if (UserNumber[i] == RandomNumber[i]) {
+                    strikes++;
+                }
+                else {
+                    for (int j = 0; j < 3; j++) {
+                        if (UserNumber[i] == RandomNumber[j]) {
+                            balls++;
+
+                        }
+                        else {
+                            outs++;
+                        }
+
+                    }
+                }
+            }
+
+            if (strikes == 3) {
+                System.out.println("정답입니다!");
+                break;
+            } else {
+                System.out.println("Strike: " + strikes);
+                System.out.println("Ball: " + balls);
+                System.out.println("Out: " + outs / 3);
+            }
+        }
+
+        scanner.close();
+    }
+
+
+    public static int[] RandomNumberProgram() {
+        int[] number = new int[3];
+        boolean[] space = new boolean[10];
+        for (int i = 0; i < 3; i++) {
+            int digit;
+            do {
+                digit = (int) (Math.random() * 10);
+            } while (digit == 0 || space[digit]);
+            number[i] = digit;
+            space[digit] = true;
+        }
+        return number;
+    }
+}
