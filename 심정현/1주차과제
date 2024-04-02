@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class week1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int result = 0;
+        int k = 0;
+        while (k == 0) {
+            System.out.println("==== 지원하는 연산 ====\n1. + (더하기)\n2. - (빼기)\n3. * (곱하기)\n4. / (몫)\n5. % (나머지)\n6. 종료\n====================");
+            System.out.println("수행하고 싶은 연산을 선태해주세요>>");
+            int q = scanner.nextInt();
+            System.out.println("첫번째 피연산자를 입력해주세요>>");
+            int n1 = scanner.nextInt();
+            System.out.println("두번째 피연산자를 입력해주세요>>");
+            int n2 = scanner.nextInt();
+            switch (q) {
+                case 1:
+                    result=n1+n2;
+                    System.out.println(n1+" + "+n2+" = "+result);
+                    break;
+                case 2:
+                    result=n1-n2;
+                    System.out.println(n1+" - "+n2+" = "+result);
+                    break;
+                case 3:
+                    result=n1*n2;
+                    System.out.println(n1+" * "+n2+" = "+result);
+                    break;
+                case 4:
+                    result=n1/n2;
+                    System.out.println(n1+" / "+n2+" = "+result);
+                    break;
+                case 5:
+                    result=n1%n2;
+                    System.out.println(n1+" % "+n2+" = "+result);
+                    break;
+                case 6:
+                    k=2;
+                    break;
+            }
+
+        }
+    }
+}
+
