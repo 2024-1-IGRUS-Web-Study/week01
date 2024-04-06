@@ -6,19 +6,19 @@ public class NumberBaseballGame {
         Scanner scan = new Scanner(System.in);
         Random random = new Random();
 
-        int randomarr[] = new int[3];
+        int randomArr[] = new int[3];
         int num;
 
         while(true){
 
-            randomarr[0] = random.nextInt(9) + 1;
-            randomarr[1] = random.nextInt(10);
-            randomarr[2] = random.nextInt(10);
+            randomArr[0] = random.nextInt(9) + 1;
+            randomArr[1] = random.nextInt(10);
+            randomArr[2] = random.nextInt(10);
 
-            while(randomarr[0] == randomarr[1] || randomarr[0] == randomarr[2] || randomarr[1] == randomarr[2]) {
-                randomarr[0] = random.nextInt(9) + 1;
-                randomarr[1] = random.nextInt(10);
-                randomarr[2] = random.nextInt(10);
+            while(randomArr[0] == randomArr[1] || randomArr[0] == randomArr[2] || randomArr[1] == randomArr[2]) {
+                randomArr[0] = random.nextInt(9) + 1;
+                randomArr[1] = random.nextInt(10);
+                randomArr[2] = random.nextInt(10);
             }
 
             while(true){
@@ -32,24 +32,21 @@ public class NumberBaseballGame {
                 }
 
                 num = Integer.parseInt(input);
-                int[] numarr = new int [3];
-                numarr[0] = num/100;
-                numarr[1] = (num/10)%10;
-                numarr[2] = num%10;
+                int[] numArr = new int [3];
+                numArr[0] = num/100;
+                numArr[1] = (num/10)%10;
+                numArr[2] = num%10;
 
                 int strike = 0;
                 int ball = 0;
                 int out = 0;
 
                 for(int i = 0; i<3; i++){
-                    for(int j = 0; j<3; j++){
-                        if(numarr[i] == randomarr[j] && i == j){
-                            strike++;
+                    for(int j = 0; j < 3; j++)
+                        if(numArr[i] == randomArr[j]) {
+                            if (i == j) strike++;
+                            else ball++;
                         }
-                        else if (numarr[i] == randomarr[j] && i != j){
-                            ball++;
-                        }
-                    }
                 }
                 out = 3 - strike - ball;
 
